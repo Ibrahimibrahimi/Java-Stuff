@@ -27,9 +27,11 @@ class Entity {
         // else => DO NOT ADD + return True
         for (Weapon w : weapons) {
             // compare infos
-            if (w.name.equals(w.name)) {
-                System.out.printf("WEAPON %s already exists in %s inventory", w.name, this.name);
-                return false;
+            if (w != null) {
+                if (w.name.equals(w.name)) {
+                    System.out.printf("WEAPON %s already exists in %s inventory", w.name, this.name);
+                    return false;
+                }
             }
         }
         return true;
