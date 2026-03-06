@@ -1,0 +1,106 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package videoplayer;
+import java.io.File;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author admin
+ */
+public class VideoPlayer extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        
+        
+        BorderPane root = new BorderPane();
+        
+        // creer le media player
+        MediaView mv = new MediaView();
+        
+        root.setCenter(mv);
+        
+        HBox h = new HBox();
+        root.setTop(h);
+        // button import video 
+        Button importBtn = new Button("Import...");
+        h.getChildren().add(importBtn);
+        
+        
+        
+        importBtn.setOnAction(e->{
+            // importer le video et creer l'obj fichier 
+            File f = new File(new FileChooser().showOpenDialog(primaryStage).toString());
+            // creer l'obj media 
+            Media m = new Media(f.toURI().toString());
+            // creer le media player 
+            MediaPlayer mp = new MediaPlayer(m);
+            System.out.println("Duration : " + m.getDuration());
+            System.out.println("Source : " + m.getSource());
+            System.out.println("Meta data : " + m.getMetadata());
+            System.out.println("Track : " + m.getTracks());
+            // ajouter au media view 
+            mv.setMediaPlayer(mp);
+        });
+        // button pour restart 
+        Button start = new Button("Restart");
+        
+        start.setOnAction(e->{
+            mv.getMediaPlayer().play(); 
+        });
+        
+        
+        Button pause = new Button("Pause");
+        pause.setOnAction(e->{
+            mv.getMediaPlayer().pause();
+        });
+        // button that show current time by milliseconds
+        Button infos = new Button("Infos"); // show current time 
+        infos.setOnAction(e->{
+            System.out.println("Time : " + mv.getMediaPlayer().getCurrentTime());
+        });
+        
+        // button That make sound volume = 0 
+        Button increaseV = new Button("+V");
+        increaseV.setOnAction(e->{
+            mv.getMediaPlayer().setVolume(mv.getMediaPlayer().getVolume() + 5);
+        });
+        Button decreaseV = new Button("-V");
+        decreaseV.setOnAction(e->{
+            mv.getMediaPlayer().setVolume(mv.getMediaPlayer().getVolume() - 5);
+        });
+        
+        
+        
+        h.getChildren().add(start);
+        h.getChildren().add(pause);
+        h.getChildren().add(infos);
+        h.getChildren().add(increaseV);
+        h.getChildren().add(decreaseV);
+        
+        
+        
+        Scene scene = new Scene(root, 300, 250);
+        
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

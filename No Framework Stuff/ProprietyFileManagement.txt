@@ -1,0 +1,23 @@
+*---------------------------Reading-----------*
+// create propriety obj 
+Properties props = new Properties();
+// load the file
+props.load(new FileInputStream("config.properties"));
+// Reading values
+String appName = props.getProperty("app.name");
+*--------------------------Writting------------*
+//  Create proprieties obj
+Properties props = new Properties();
+// add new propriety key-value
+props.setProperty("Key", "Value");
+props.setProperty("Key", "Value");
+props.setProperty("Key", "Value");
+// save the file 
+try (FileOutputStream fos = new FileOutputStream("config.properties")) {
+       // 1st argument: OutputStream
+      // 2nd argument: a comment at the top of the file
+      props.store(fos, "Application Configuration File");
+      System.out.println("Properties file created successfully!");
+} catch (IOException e) {
+            e.printStackTrace();
+}

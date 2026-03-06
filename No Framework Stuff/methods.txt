@@ -1,0 +1,3 @@
+1. enregistrer les posts dans des fichier ".proprieties" , qui auront, dont le nom du (fichier = nom utilisateur) , et aussi utiliser .split("") pour recharger les commentaires
+2. get list dir of a folder 
+3. sauvegarder les informations d'utilisateur actuel dans son fichier,situé dans une dossier "Current"
