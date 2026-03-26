@@ -1,7 +1,6 @@
 import classes.Background;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -9,9 +8,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) {
 		
-		Background root = new Background(0, 0)	
-		
-		
+		Background root = new Background(Config.WINDOW_W,Config.WINDOW_H);			
 		
 		// app config
 		Scene scene = new Scene(root);
