@@ -1,0 +1,21 @@
+<dependencies>
+  <dependency>
+    <groupId>com.github.almasb</groupId>
+    <artifactId>fxgl</artifactId>
+    <version>21.1</version>
+  </dependency>
+</dependencies>
+
+<build>
+  <plugins>
+    <!-- Needed to run JavaFX apps -->
+    <plugin>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-maven-plugin</artifactId>
+      <version>0.0.8</version>
+      <configuration>
+        <mainClass>com.yourpackage.MainApp</mainClass>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
